@@ -20,11 +20,12 @@ app.set('views','views')
 
 app.use(express.static(path.join(__dirname,'public')))
 app.use(express.json())
+app.use(express.urlencoded({extended:true}))
 
 
 
 app.get('/', (req, res) => {
-    res.render('index',{pageTitle:'Home'})
+    res.render('index',{pageTitle:'Home',shortUrl: null,originalUrl:null, error: null})
 })
 
 app.use(url)

@@ -10,17 +10,17 @@ export const createUrl = async (req,res,next)=>{
         return res.status(422).json({error:"Invalid Link"})
     }
     const existingUrl = await url.findOne({originalUrl})
+    console.log("new"+ existingUrl)
     if (existingUrl) {
-        return res.status(422).json("Hi")
+           const  shortId = `${process.env.BASELINK}/${existingUrl.shortId}`
+           return res.render('index',{pageTitle:'Home', shortUrl: shortId})
     }
 
    const newUrl = await url.create({originalUrl:originalUrl,
         shortId:urlShorten()
     })
 
-    const shortenLink = `${process.env.BASELINK}/${newUrl.shortId}`
-    console.log(shortenLink)
-
+    const shortUrl = `${process.env.BASELINK}/${newUrl.shortId}`
+    res.render('index',{pageTitle:'Home',shortUrl,error:null})
     console.log(newUrl)
 }
-

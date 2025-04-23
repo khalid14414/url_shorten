@@ -9,8 +9,7 @@
 <body>
     <div class="container">
         <h1>🔗 URL Shortener</h1>
-    
-        <form action="/shorten" method="POST" class="url-form">
+        <form action="/url" method="POST" class="url-form">
           <input 
             type="url" 
             name="originalUrl" 
@@ -19,5 +18,12 @@
           />
           <button type="submit">Shorten</button>
         </form>
+        <% if (shortUrl) { %>
+          <div class="result">
+           <a href=""><input type="text" id="shortUrlInput" value="<%= shortUrl %>" readonly></a> 
+            <button onclick="copyToClipboard()">Copy</button>
+          </div>
+        <% } %>
+    </div>
 </body>
 </html>
