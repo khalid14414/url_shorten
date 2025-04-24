@@ -1,0 +1,3 @@
+This project is about ...
+/*************  ✨ Windsurf Command ⭐  *************/
+This project is about building a URL shortener using Node.js, Express.js, MongoDB and EJS view engine.
